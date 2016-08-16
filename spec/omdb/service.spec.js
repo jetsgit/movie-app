@@ -69,4 +69,22 @@ describe('omdb service', function() {
     $httpBackend.flush();
     expect(response).toEqual(movieDataById);
   });
+  it('should handle error', function() {
+    var response;
+
+    $httpBackend.expect('GET', 'http://www.omdbapi.com/?v=1&i=tt0076759')
+      .respond(500);
+
+    omdbApi.find('tt0076759')
+      .then( function (data) {
+        response = data;
+      })
+      .catch( function () {
+        response = 'Error!';
+      });
+
+    $httpBackend.flush();
+
+    expect(response).toEqual('Error!');
+  });
 });
