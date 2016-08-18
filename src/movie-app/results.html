@@ -8,9 +8,10 @@
   </ol>
   <accordian>
     <accordian-group ng-repeat="result in results" is-open="result.open">
-      <accorian-heading>
+      <accordian-heading>
         {{result.Title}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': result.open, 'glyphicon-chevron-right': !result.open}"></i>
-      </accorian-heading>
+        <br>
+      </accordian-heading>
     </accordian-group>
   </accordian>
 </div>
