@@ -11,7 +11,7 @@ describe('Results Controller', function() {
       {
         "Title": "Star Wars: Episode V - The Empire Strikes Back",
         "Year": "1980",
-        "imbdb": "tt0080684",
+        "imbID": "tt0080684",
         "Type": "movie"
       },
       {
