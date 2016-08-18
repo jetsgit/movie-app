@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="movieApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Movie App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css" >
+      .container { max-width: 900px; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="page-header">
+          <h1><a href="#/">MovieApp</a></h1>
+          <p class="lead">Your Resource for Movie Data</p>
+        </div>
+        <div ng-controller="SearchController">
+          <form class="form-inline-lg" action="" ng-submit="search()">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Film title..." ng-model="query">
+              <span class="input-group-btn"><button class="btn btn-default" type="button" ng-click="">Go!</button></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div ng-view=""></div>
+    </div>
+    <hr>
+
+    <div class="footer">
+      <div class="container">
+        <p>from @ironhorserails</p>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.4/angular.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.4/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.2/ui-bootstrap-tpls.min.js"></script>
+
+    <script type="text/javascript" src="movie-app/app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="omdb/service.js" charset="utf-8"></script>
+    <script type="text/javascript" src="movie-app/search.controller.js" charset="utf-8"></script>
+    <script type="text/javascript" src="movie-app/results.controller.js" charset="utf-8"></script>
+  </body>
+</html>
