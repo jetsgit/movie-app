@@ -6,12 +6,11 @@
     </li>
     <li>Results</li>
   </ol>
-  <accordian>
-    <accordian-group ng-repeat="result in results" is-open="result.open">
+  <uib-accordian>
+    <div uib-accordian-group ng-repeat="result in results" is-open="result.open">
       <accordian-heading>
         {{result.Title}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': result.open, 'glyphicon-chevron-right': !result.open}"></i>
-        <br>
       </accordian-heading>
-    </accordian-group>
-  </accordian>
+    </div>
+  </uib-accordian>
 </div>
