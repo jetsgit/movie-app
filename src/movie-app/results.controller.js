@@ -13,4 +13,13 @@ angular.module('movieApp')
       .catch( function() {
         $scope.errorMessage = 'Something went wrong!'
       });
+    $scope.expand = function(index, id) {
+      omdbApi.find(id)
+        .then( function(data) {
+          console.log("Index is" + index);
+          console.log("Id is" + id);
+          $scope.results[index].data = data;
+          $scope.results[index].open = true;
+        });
+    };
   });
