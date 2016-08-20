@@ -21,7 +21,7 @@ angular.module('movieApp')
           '</div>',
         '</div>'
       ].join('')
-    }
+    };
   });
 
         // '<div class="col-sm-4"',
