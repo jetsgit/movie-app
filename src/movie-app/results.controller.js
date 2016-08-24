@@ -22,5 +22,4 @@ angular.module('movieApp')
           $scope.results[index].open = true;
         });
     };
-    $scope.oneAtATime = true;
   });

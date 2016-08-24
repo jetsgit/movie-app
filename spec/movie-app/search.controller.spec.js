@@ -12,11 +12,11 @@ describe('Search Controller', function() {
     $scope = {};
     $scope.data = {};
     _$controller_('SearchController', { $scope: $scope, $location: _$location_, $timeout: _$timeout_ });
-    dump(angular.mock.dump($scope.digest));
+    // dump(angular.mock.dump($scope.digest));
   }));
   it('should redirect to the query results page for non-empty query', function() {
     $scope.data.query = 'star wars';
-    dump(angular.mock.dump($scope.data.query));
+    // dump(angular.mock.dump($scope.data.query));
     $scope.search();
     expect($location.url()).toBe('/results?q=star%20wars');
   });

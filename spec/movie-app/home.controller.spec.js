@@ -57,8 +57,8 @@ describe('Home Controller', function() {
 
   it('should rotate movies every 5 seconds', function() {
     // should have a default movie
-    dump(angular.mock.dump(results))
-    dump(angular.mock.dump($scope.result.imdbID))
+    // dump(angular.mock.dump(results))
+    // dump(angular.mock.dump($scope.result.imdbID))
     expect($scope.result.Title).toBe(results[0].Title);
     // should update after 5 seconds
     $interval.flush(5000);

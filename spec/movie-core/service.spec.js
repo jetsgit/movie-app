@@ -66,6 +66,7 @@ describe('MovieCore', function() {
     // Below we switch to matching any route, and use headerData var
 
     var headerData = function (headers) {
+      // dump(angular.mock.dump(headers));
       return headers.authToken === 'bluesuedeshoes'
     }
 
