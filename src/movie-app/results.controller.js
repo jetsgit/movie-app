@@ -1,5 +1,5 @@
 angular.module('movieApp')
-  .controller('ResultsController', function ($scope, $location, omdbApi) {
+  .controller('ResultsController', function ($scope, $location, $exceptionHandler, omdbApi) {
     // $scope.results = [];
     // $scope.results.push({data: { Title: 'Star Wars: Episode IV - A New Hope' }}); 
     // $scope.results.push({data: { Title: 'Star Wars: Episode V - The Empire Strikes Back' }});
@@ -10,8 +10,10 @@ angular.module('movieApp')
       .then( function(data) {
         $scope.results = data.Search;
       })
-      .catch( function() {
-        $scope.errorMessage = 'Something went wrong!'
+      .catch( function(e) {
+        $exceptionHandler(e);
+        // throw 'Something went wrong!'
+        // $scope.errorMessage = 'Something went wrong!'
       });
     $scope.expand = function(index, id) {
       omdbApi.find(id)
