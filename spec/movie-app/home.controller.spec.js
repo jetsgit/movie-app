@@ -27,13 +27,6 @@ describe('Home Controller', function() {
     $exceptionHandlerProvider.mode('log');
   }));
 
-  // beforeEach(inject(function(_$q_, _PopularMovies_) {
-  //   spyOn(_PopularMovies_, 'get').and.callFake( function () {
-  //     var deferred = _$q_.defer();
-  //     deferred.resolve(['tt0076759', 'tt0080684', 'tt0086190']);
-  //     return deferred.promise;
-  //   });
-  // }));
 
   beforeEach(inject(function(_$q_, _omdbApi_) {
     spyOn(_omdbApi_, 'find').and.callFake( function () {
@@ -63,19 +56,10 @@ describe('Home Controller', function() {
     omdbApi = _omdbApi_;
     PopularMovies = _PopularMovies_;
     $exceptionHandler = _$exceptionHandler_;
-    // _$controller_('HomeController',{
-    //   $scope: $scope,
-    //   $interval: _$interval_,
-    //   omdbApi: _omdbApi_,
-    //   PopularMovies: _PopularMovies_
-    // });
-    // _$rootScope_.$apply();
   }));
 
   it('should rotate movies every 5 seconds', function() {
-    // should have a default movie
     // dump(angular.mock.dump(results))
-    // dump(angular.mock.dump($scope.result.imdbID))
     spyOn(PopularMovies, 'get').and.callFake( function () {
       var deferred = $q.defer();
       deferred.resolve(['tt0076759', 'tt0080684', 'tt0086190']);
@@ -104,8 +88,6 @@ describe('Home Controller', function() {
   });
   
   it('should handle error', function() {
-    // should have a default movie
-    // dump(angular.mock.dump(results))
     // dump(angular.mock.dump($scope.result.imdbID))
     spyOn(PopularMovies, 'get').and.callFake( function () {
       var deferred = $q.defer();
