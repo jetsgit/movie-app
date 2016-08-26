@@ -75,7 +75,7 @@ describe('Results Controller', function() {
     // dump(angular.mock.dump($scope.errorMessage));
       $controller('ResultsController', { $scope: $scope });
       $rootScope.$apply();
-      dump($exceptionHandler.errors);
+      // dump($exceptionHandler.errors);
       expect($exceptionHandler.errors).toEqual(['Something went wrong!']);
   });
 });
