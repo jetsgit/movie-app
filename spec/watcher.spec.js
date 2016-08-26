@@ -28,8 +28,8 @@ describe('Count Watchers', function() {
     $rootScope.$digest();
 
     expect(element[0].outerHTML).toBe(expectedHtml);
-    console.log('scopes', $rootScope.$countChildScopes());
-    console.log('$rootScope watchers:', $rootScope.$countWatchers());
-    console.log(angular.mock.dump($rootScope));
+    // console.log('scopes', $rootScope.$countChildScopes());
+    // console.log('$rootScope watchers:', $rootScope.$countWatchers());
+    // console.log(angular.mock.dump($rootScope));
   });
 });
