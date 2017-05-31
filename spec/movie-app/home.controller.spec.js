@@ -27,6 +27,11 @@ describe('Home Controller', function() {
     $exceptionHandlerProvider.mode('log');
   }));
 
+  beforeEach(module(function($logProvider) {
+    // Set debugging level, default is true
+    $logProvider.debugEnabled(true)
+  }));
+
 
   beforeEach(inject(function(_$q_, _omdbApi_) {
     spyOn(_omdbApi_, 'find').and.callFake( function () {
@@ -47,7 +52,7 @@ describe('Home Controller', function() {
     });
   }));
 
-  beforeEach(inject(function(_$controller_, _$interval_, _$q_, _$rootScope_, _$exceptionHandler_, _omdbApi_, _PopularMovies_) {
+  beforeEach(inject(function(_$controller_, _$interval_, _$q_, _$rootScope_, _$exceptionHandler_, _$log_, _omdbApi_, _PopularMovies_) {
     $scope = {};
     $interval = _$interval_;
     $q = _$q_;
@@ -56,14 +61,16 @@ describe('Home Controller', function() {
     omdbApi = _omdbApi_;
     PopularMovies = _PopularMovies_;
     $exceptionHandler = _$exceptionHandler_;
+    $log = _$log_;
   }));
 
   it('should rotate movies every 5 seconds', function() {
     // dump(angular.mock.dump(results))
-    spyOn(PopularMovies, 'get').and.callFake( function () {
-      var deferred = $q.defer();
-      deferred.resolve(['tt0076759', 'tt0080684', 'tt0086190']);
-      return deferred.promise;
+    spyOn(PopularMovies, 'query').and.callFake( function (cb) {
+      // var deferred = $q.defer();
+      // deferred.resolve(['tt0076759', 'tt0080684', 'tt0086190']);
+      // return deferred.promise;
+      cb(['tt0076759', 'tt0080684', 'tt0086190']);
     });
 
     $controller('HomeController',{
@@ -85,14 +92,27 @@ describe('Home Controller', function() {
     // should update after 5 seconds
     $interval.flush(5000);
     expect($scope.result.Title).toBe(results[0].Title);
+
+    // Zero logs
+    // $log.reset();
+    
+    // Test that logs are empty
+    // $log.assertEmpty();
+    
+    // console.log(angular.mock.dump($log.log.logs));
+    // console.log(angular.mock.dump($log.info.logs));
+    // console.log(angular.mock.dump($log.error.logs));
+    // console.log(angular.mock.dump($log.warn.logs));
+    // console.log(angular.mock.dump($log.debug.logs));
   });
   
   it('should handle error', function() {
     // dump(angular.mock.dump($scope.result.imdbID))
-    spyOn(PopularMovies, 'get').and.callFake( function () {
-      var deferred = $q.defer();
-      deferred.resolve(['tt0076759', 'tt0080684', 'tt0086190', 'ttError']);
-      return deferred.promise;
+    spyOn(PopularMovies, 'query').and.callFake( function(cb) {
+      // var deferred = $q.defer();
+      // deferred.resolve(['tt0076759', 'tt0080684', 'tt0086190', 'ttError']);
+      // return deferred.promise;
+      cb(['tt0076759', 'tt0080684', 'tt0086190', 'ttError']);
     });
 
     $controller('HomeController',{

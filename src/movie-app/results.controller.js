@@ -1,13 +1,22 @@
 angular.module('movieApp')
-  .controller('ResultsController', function ($scope, $location, $exceptionHandler, omdbApi) {
+  .controller('ResultsController', function ($scope, $location, $exceptionHandler, $log, omdbApi) {
     // $scope.results = [];
     // $scope.results.push({data: { Title: 'Star Wars: Episode IV - A New Hope' }}); 
     // $scope.results.push({data: { Title: 'Star Wars: Episode V - The Empire Strikes Back' }});
     // $scope.results.push({data: { Title: 'Star Wars: Episode VI - Return of the Jedi' }});
 
+    // Logging Levels
+    
+    // $log.log('standard log');
+    // $log.info('info.log');
+    // $log.error('error log');
+    // $log.warn('warn log');
+    // $log.debug('some debug information');
     var query = $location.search().q;
+		$log.debug('Controller loaded with query:', query);
     omdbApi.search(query)
       .then( function(data) {
+        $log.debug('Data returned for query: ', query, data);
         $scope.results = data.Search;
       })
       .catch( function(e) {

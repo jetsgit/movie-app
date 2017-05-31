@@ -1,3 +1,6 @@
 Session.vim
 *.swp
 *.swo
+angularjs-ngmock-unit-testing/**/*
+node_modules/**/*
+.DS_Store

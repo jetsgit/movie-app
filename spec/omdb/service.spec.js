@@ -82,7 +82,7 @@ describe('omdb service', function() {
     // .expect --- Best for testing exact usage
     // .expect --- Order Matters
     // .expect --- Re-use Not Allowed
-    $httpBackend.expect('GET', 'http://www.omdbapi.com/?apikey=6a32679c&v=1&i=tt0076759' )
+    $httpBackend.expect('GET', 'http://www.omdbapi.com/?apikey=6a32679c&v=1&plot=full&i=tt0076759' )
       .respond(200, movieDataById);
     
     omdbApi.find('tt0076759')
@@ -96,7 +96,7 @@ describe('omdb service', function() {
   it('should handle error', function() {
     var response;
 
-    $httpBackend.expect('GET', 'http://www.omdbapi.com/?apikey=6a32679c&v=1&i=tt0076759')
+    $httpBackend.expect('GET', 'http://www.omdbapi.com/?apikey=6a32679c&v=1&plot=full&i=tt0076759')
       .respond(500);
 
     omdbApi.find('tt0076759')

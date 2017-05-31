@@ -1,7 +1,7 @@
 angular.module('movieApp')
-  .controller('HomeController', function($scope, $interval, omdbApi, $exceptionHandler, PopularMovies) {
+  .controller('HomeController', function($scope, $interval, $exceptionHandler, omdbApi,  PopularMovies) {
+
     var results = [];
-    $scope.result = results[0];
     var idx = 0;
     var findMovie = function (id) {
       omdbApi.find(id)
@@ -14,14 +14,13 @@ angular.module('movieApp')
     };
 
     // Get PopularMovies List
-    PopularMovies.get()
-      .then( function (data) {
-        // var data = ['tt0076759', 'tt0080684', 'tt0086190'];
-        results = data;
-        findMovie(results[0]);
-        $interval( function() {
-          ++idx;
-          findMovie(results[idx % results.length]);
-        }, 5000);
-      });
+    PopularMovies.query( function (data) {
+      console.log("Result of query:" + data);
+      results = data;
+      findMovie(results[0]);
+      $interval( function() {
+        ++idx;
+        findMovie(results[idx % results.length]);
+      }, 5000);
+    });
   });

@@ -9,8 +9,8 @@ angular.module('omdb', [])
         .success(function(data) {
           deferred.resolve(data);
         })
-        .error(function() {
-          deferred.reject();
+        .error(function(e) {
+          deferred.reject(e);
         });
       return deferred.promise;
     }
@@ -20,7 +20,7 @@ angular.module('omdb', [])
     }
 
     service.find = function(id) {
-      return httpPromise(baseUrl + 'i=' + id);
+      return httpPromise(baseUrl + 'plot=full&' + 'i=' + id);
     }
     return service;
   });
