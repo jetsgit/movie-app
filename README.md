@@ -2,6 +2,8 @@ AngularJS Unit Testing using ngMock
 ==================================
 
 * Example of AngularJS app with Jasmine tests.
+* Requires node
+* Run app with 'node index.js'
 
 Jasmine Framework
 -----------------
